@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Nasabah - Andika Saving</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiwyQzYuNDgsMiwyLDYuNDgsMiwxMnM0LjQ4LDEwLDEwLDEwczEwLTQuNDgsMTAtMTBTMTcuNTIsMiwxMiwyek0xNiwxNmMtMC4yNywwLTAuNTMtMC4xMS0wLjcxLTAuMjlMMTAuOTQsMTJsNC4zNS0zLjcxYzAuMzYtMC4zNiwwLjkzLTAuMzcsMS4zLTAuMDFjMC4zNiwwLjM2LDAuMzcsMC45MywwLjAxLDEuM0wxMy4wNiwxMmwzLjU0LDMuNzFjMC4zNiwwLjM3LDAuMzUsMC45NC0wLjAxLDEuM0MxNi41MywxNS44OSwxNi4yNywxNiwxNiwxNnoiLz48L3N2Zz4=" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                Andika Saving
+            </a>
+            <div class="navbar-nav ms-auto">
+                <span class="navbar-text me-3">Halo, <span id="userName">Nasabah</span></span>
+                <button class="btn btn-outline-light btn-sm" id="logoutBtn">Keluar</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-section py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Saldo Card -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Saldo Tabungan</h5>
+                            <h2 class="saldo-amount" id="saldoAmount">Rp 0</h2>
+                            <p class="text-muted">Saldo tersedia saat ini</p>
+                        </div>
+                    </div>
+
+                    <!-- Riwayat Transaksi -->
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">Riwayat Transaksi</h5>
+                            <button class="btn btn-sm btn-outline-primary" id="refreshTransactions">Refresh</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Tanggal</th>
+                                            <th>Jenis</th>
+                                            <th>Jumlah</th>
+                                            <th>Keterangan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="transactionsTable">
+                                        <!-- Data transaksi akan diisi oleh JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="noTransactions" class="text-center py-4 d-none">
+                                <p class="text-muted">Belum ada transaksi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Menu Aksi -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Menu Aksi</h5>
+                        </div>
+                        <div class="card-body">
+                            <button class="btn btn-primary w-100 mb-3" data-bs-toggle="modal" data-bs-target="#menabungModal">
+                                Menabung
+                            </button>
+                            <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#tarikTunaiModal">
+                                Tarik Tunai
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Informasi Akun -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Informasi Akun</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <strong>Nama:</strong> <span id="accountName">-</span>
+                            </div>
+                            <div class="mb-3">
+                                <strong>Email:</strong> <span id="accountEmail">-</span>
+                            </div>
+                            <div class="mb-3">
+                                <strong>Bergabung sejak:</strong> <span id="accountSince">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Menabung -->
+    <div class="modal fade" id="menabungModal" tabindex="-1" aria-labelledby="menabungModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="menabungModalLabel">Menabung</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="menabungForm">
+                        <div class="mb-3">
+                            <label for="jumlahMenabung" class="form-label">Jumlah</label>
+                            <input type="number" class="form-control" id="jumlahMenabung" min="1000" required>
+                            <div class="form-text">Minimal menabung: Rp 1.000</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="keteranganMenabung" class="form-label">Keterangan (opsional)</label>
+                            <input type="text" class="form-control" id="keteranganMenabung" placeholder="Contoh: Tabungan bulanan">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" id="submitMenabung">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tarik Tunai -->
+    <div class="modal fade" id="tarikTunaiModal" tabindex="-1" aria-labelledby="tarikTunaiModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tarikTunaiModalLabel">Tarik Tunai</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="tarikTunaiForm">
+                        <div class="mb-3">
+                            <label for="jumlahTarik" class="form-label">Jumlah</label>
+                            <input type="number" class="form-control" id="jumlahTarik" min="1000" required>
+                            <div class="form-text">Saldo tersedia: <span id="availableBalance">Rp 0</span></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="keteranganTarik" class="form-label">Keterangan (opsional)</label>
+                            <input type="text" class="form-control" id="keteranganTarik" placeholder="Contoh: Untuk kebutuhan sehari-hari">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" id="submitTarik">Tarik</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="api-simulator.js"></script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syarat & Ketentuan - Andika Saving</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #283593;
+            --accent-color: #3949ab;
+            --light-color: #e8eaf6;
+            --text-color: #333333;
+            --light-text: #757575;
+            --border-color: #e0e0e0;
+            --background-color: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+        }
+
+        .custom-navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .policy-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .policy-content {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 3rem;
+            margin-top: -50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-color);
+        }
+
+        .subsection-title {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin: 2rem 0 1rem;
+        }
+
+        .policy-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .policy-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .policy-list li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .nav-tabs .nav-link {
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: var(--primary-color);
+            font-weight: 600;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .contact-info {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .policy-content {
+                padding: 1.5rem;
+                margin-top: -30px;
+            }
+            
+            .policy-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiwyQzYuNDgsMiwyLDYuNDgsMiwxMnM0LjQ4LDEwLDEwLDEwczEwLTQuNDgsMTAtMTBTMTcuNTIsMiwxMiwyek0xNiwxNmMtMC4yNywwLTAuNTMtMC4xMS0wLjcxLTAuMjlMMTAuOTQsMTJsNC4zNS0zLjcxYzAuMzYtMC4zNiwwLjkzLTAuMzcsMS4zLTAuMDFjMC4zNiwwLjM2LDAuMzcsMC45MywwLjAxLDEuM0wxMy4wNiwxMmwzLjU0LDMuNzFjMC4zNiwwLjM3LDAuMzUsMC45NC0wLjAxLDEuM0MxNi41MywxNS44OSwxNi4yNywxNiwxNiwxNnoiLz48L3N2Zz4=" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                Andika Saving
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="index.html">Beranda</a>
+                <a class="nav-link" href="login.html">Masuk</a>
+                <a class="nav-link" href="register.html">Daftar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="policy-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Syarat & Ketentuan</h1>
+            <p class="lead">Ketentuan penggunaan layanan dan kebijakan privasi Andika Saving</p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="container my-5">
+        <div class="policy-content">
+            <!-- Navigation Tabs -->
+            <ul class="nav nav-tabs mb-4" id="policyTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="terms-tab" data-bs-toggle="tab" data-bs-target="#terms" type="button" role="tab">Syarat & Ketentuan</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="privacy-tab" data-bs-toggle="tab" data-bs-target="#privacy" type="button" role="tab">Kebijakan Privasi</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="policyTabsContent">
+                <!-- Syarat & Ketentuan -->
+                <div class="tab-pane fade show active" id="terms" role="tabpanel">
+                    <h2 class="section-title">Syarat & Ketentuan Penggunaan</h2>
+                    <p class="mb-4">Dengan mengakses dan menggunakan layanan Andika Saving, Anda menyetujui untuk terikat oleh syarat dan ketentuan berikut:</p>
+
+                    <h4 class="subsection-title">1. Definisi</h4>
+                    <ul class="policy-list">
+                        <li><strong>Platform:</strong> Aplikasi dan website Andika Saving</li>
+                        <li><strong>Pengguna:</strong> Individu yang terdaftar dan menggunakan layanan</li>
+                        <li><strong>Nasabah:</strong> Pengguna dengan peran nasabah yang melakukan transaksi tabungan</li>
+                        <li><strong>Admin:</strong> Pengguna dengan peran administrator sistem</li>
+                        <li><strong>Transaksi:</strong> Aktivitas menabung dan penarikan dana</li>
+                    </ul>
+
+                    <h4 class="subsection-title">2. Pendaftaran Akun</h4>
+                    <ul class="policy-list">
+                        <li>Pengguna harus berusia minimal 17 tahun</li>
+                        <li>Data yang didaftarkan harus akurat dan valid</li>
+                        <li>Setiap pengguna hanya boleh memiliki satu akun</li>
+                        <li>Pengguna bertanggung jawab atas kerahasiaan kata sandi</li>
+                        <li>Andika Saving berhak menutup akun yang melanggar ketentuan</li>
+                    </ul>
+
+                    <h4 class="subsection-title">3. Transaksi dan Tabungan</h4>
+                    <ul class="policy-list">
+                        <li>Setoran tabungan minimum Rp 10.000</li>
+                        <li>Penarikan minimum Rp 50.000</li>
+                        <li>Saldo harus mencukupi untuk melakukan penarikan</li>
+                        <li>Transaksi yang sudah diproses tidak dapat dibatalkan</li>
+                        <li>Riwayat transaksi disimpan secara permanen</li>
+                    </ul>
+
+                    <h4 class="subsection-title">4. Hak dan Kewajiban Pengguna</h4>
+                    <ul class="policy-list">
+                        <li>Mengakses dashboard pribadi</li>
+                        <li>Melakukan transaksi tabungan sesuai ketentuan</li>
+                        <li>Melaporkan aktivitas mencurigakan</li>
+                        <li>Tidak melakukan tindakan penipuan atau manipulasi</li>
+                        <li>Mematuhi semua peraturan yang berlaku</li>
+                    </ul>
+
+                    <h4 class="subsection-title">5. Hak dan Kewajiban Andika Saving</h4>
+                    <ul class="policy-list">
+                        <li>Menyediakan platform yang aman dan stabil</li>
+                        <li>Melindungi data pribadi pengguna</li>
+                        <li>Memproses transaksi dengan benar</li>
+                        <li>Memberikan layanan customer service</li>
+                        <li>Melakukan maintenance sistem secara berkala</li>
+                    </ul>
+
+                    <h4 class="subsection-title">6. Pembatasan Tanggung Jawab</h4>
+                    <ul class="policy-list">
+                        <li>Tidak bertanggung jawab atas kerugian akibat kelalaian pengguna</li>
+                        <li>Tidak bertanggung jawab atas force majeure</li>
+                        <li>Berhak mengubah syarat dan ketentuan dengan pemberitahuan</li>
+                        <li>Dapat menghentikan layanan dengan pemberitahuan 30 hari</li>
+                    </ul>
+
+                    <h4 class="subsection-title">7. Sanksi dan Pelanggaran</h4>
+                    <ul class="policy-list">
+                        <li>Akun dapat ditangguhkan sementara untuk investigasi</li>
+                        <li>Akun dapat ditutup permanen untuk pelanggaran berat</li>
+                        <li>Transaksi mencurigakan akan dibekukan</li>
+                        <li>Data dapat dilaporkan kepada authorities jika diperlukan</li>
+                    </ul>
+                </div>
+
+                <!-- Kebijakan Privasi -->
+                <div class="tab-pane fade" id="privacy" role="tabpanel">
+                    <h2 class="section-title">Kebijakan Privasi</h2>
+                    <p class="mb-4">Kebijakan Privasi ini menjelaskan bagaimana Andika Saving mengumpulkan, menggunakan, dan melindungi informasi pribadi Anda.</p>
+
+                    <h4 class="subsection-title">1. Informasi yang Kami Kumpulkan</h4>
+                    <ul class="policy-list">
+                        <li><strong>Data Pribadi:</strong> Nama lengkap, alamat email</li>
+                        <li><strong>Data Akun:</strong> Username, kata sandi terenkripsi</li>
+                        <li><strong>Data Finansial:</strong> Saldo, riwayat transaksi</li>
+                        <li><strong>Data Teknis:</strong> Alamat IP, jenis browser, perangkat</li>
+                        <li><strong>Data Usage:</strong> Log aktivitas, preferensi</li>
+                    </ul>
+
+                    <h4 class="subsection-title">2. Penggunaan Informasi</h4>
+                    <ul class="policy-list">
+                        <li>Menyediakan dan mengoperasikan layanan</li>
+                        <li>Memproses transaksi keuangan</li>
+                        <li>Memverifikasi identitas pengguna</li>
+                        <li>Meningkatkan kualitas layanan</li>
+                        <li>Mengirim notifikasi penting</li>
+                        <li>Memenuhi kewajiban hukum</li>
+                    </ul>
+
+                    <h4 class="subsection-title">3. Perlindungan Data</h4>
+                    <ul class="policy-list">
+                        <li>Menggunakan enkripsi untuk data sensitif</li>
+                        <li>Menerapkan access control ketat</li>
+                        <li>Melakukan regular security audit</li>
+                        <li>Melatih staff tentang privasi data</li>
+                        <li>Menyimpan data di lingkungan yang aman</li>
+                    </ul>
+
+                    <h4 class="subsection-title">4. Penyimpanan Data</h4>
+                    <ul class="policy-list">
+                        <li>Data disimpan selama akun aktif</li>
+                        <li>Data transaksi disimpan selama 5 tahun</li>
+                        <li>Data dapat diarsipkan setelah akun ditutup</li>
+                        <li>Backup data dilakukan secara berkala</li>
+                        <li>Data dihapus sesuai retention policy</li>
+                    </ul>
+
+                    <h4 class="subsection-title">5. Berbagi Informasi</h4>
+                    <ul class="policy-list">
+                        <li>Tidak menjual data ke pihak ketiga</li>
+                        <li>Hanya berbagi data ketika diwajibkan hukum</li>
+                        <li>Dapat berbagi data dengan penyedia layanan essential</li>
+                        <li>Data agregat anonim untuk analitik</li>
+                        <li>Persetujuan pengguna untuk sharing khusus</li>
+                    </ul>
+
+                    <h4 class="subsection-title">6. Hak Pengguna</h4>
+                    <ul class="policy-list">
+                        <li>Hak untuk mengakses data pribadi</li>
+                        <li>Hak untuk memperbaiki data yang tidak akurat</li>
+                        <li>Hak untuk menghapus data (hak untuk dilupakan)</li>
+                        <li>Hak untuk membatasi pemrosesan data</li>
+                        <li>Hak untuk menarik persetujuan</li>
+                        <li>Hak untuk portabilitas data</li>
+                    </ul>
+
+                    <h4 class="subsection-title">7. Cookies dan Tracking</h4>
+                    <ul class="policy-list">
+                        <li>Menggunakan cookies untuk fungsi essential</li>
+                        <li>Cookies untuk analitik dan performa</li>
+                        <li>Pengguna dapat mengatur preferensi cookies</li>
+                        <li>Tracking untuk keamanan dan fraud prevention</li>
+                        <li>Opsi opt-out untuk marketing cookies</li>
+                    </ul>
+
+                    <h4 class="subsection-title">8. Perubahan Kebijakan</h4>
+                    <ul class="policy-list">
+                        <li>Berhak mengubah kebijakan privasi</li>
+                        <li>Perubahan akan diumumkan 30 hari sebelumnya</li>
+                        <li>Pengguna akan mendapat notifikasi email</li>
+                        <li>Penggunaan berkelanjutan berarti menerima perubahan</li>
+                        <li>Versi sebelumnya tetap tersedia untuk referensi</li>
+                    </ul>
+
+                    <div class="contact-info">
+                        <h5 class="subsection-title">Kontak Privasi</h5>
+                        <p>Untuk pertanyaan tentang kebijakan privasi atau penggunaan data pribadi Anda, silakan hubungi:</p>
+                        <ul class="policy-list">
+                            <li>Email: <strong>privacy@andikakhairulanwar10@gmail.com</strong></li>
+                            <li>Telepon: <strong> <a href="https://wa.me/qr/5B2BMEUDRNB7K1">085936603517</a></strong></li>
+                            <li>Alamat: <strong>Kab Pekalongan. Kec Sragi</strong></li>
+                            <li>Jam Operasional: <strong>Senin-Jumat, 09:00-17:00 WIB</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Persetujuan -->
+            <div class="alert alert-info mt-5">
+                <h6 class="alert-heading">📋 Pengakuan dan Persetujuan</h6>
+                <p class="mb-0">Dengan menggunakan layanan Andika Saving, Anda mengakui bahwa Anda telah membaca, memahami, dan menyetujui semua syarat dan ketentuan serta kebijakan privasi yang tercantum di atas.</p>
+            </div>
+
+            <!-- Update Information -->
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h6 class="card-title">🔄 Informasi Pembaruan</h6>
+                    <p class="card-text mb-2"><strong>Terakhir diperbarui:</strong> 1 Desember 2023</p>
+                    <p class="card-text mb-0"><strong>Versi dokumen:</strong> 2.1</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 Andika Saving. Semua hak dilindungi.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="index.html" class="footer-link">Beranda</a>
+                    <a href="#" class="footer-link">Kebijakan Privasi</a>
+                    <a href="#" class="footer-link">Syarat & Ketentuan</a>
+                    <a href="#" class="footer-link">Bantuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">↑</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Back to top functionality
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Show/hide back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        // Print functionality
+        function printPolicy() {
+            window.print();
+        }
+
+        // Tab persistence
+        document.addEventListener('DOMContentLoaded', function() {
+            const policyTabs = document.getElementById('policyTabs');
+            if (policyTabs) {
+                policyTabs.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('nav-link')) {
+                        const tabId = e.target.getAttribute('data-bs-target');
+                        localStorage.setItem('activePolicyTab', tabId);
+                    }
+                });
+
+                // Restore active tab
+                const activeTab = localStorage.getItem('activePolicyTab');
+                if (activeTab) {
+                    const tab = document.querySelector(`[data-bs-target="${activeTab}"]`);
+                    if (tab) {
+                        new bootstrap.Tab(tab).show();
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

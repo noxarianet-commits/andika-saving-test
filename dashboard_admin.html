@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Andika Saving</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar dengan Notifikasi -->
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiwyQzYuNDgsMiwyLDYuNDgsMiwxMnM0LjQ4LDEwLDEwLDEwczEwLTQuNDgsMTAtMTBTMTcuNTIsMiwxMiwyek0xNiwxNmMtMC4yNywwLTAuNTMtMC4xMS0wLjcxLTAuMjlMMTAuOTQsMTJsNC4zNS0zLjcxYzAuMzYtMC4zNiwwLjkzLTAuMzcsMS4zLTAuMDFjMC4zNiwwLjM2LDAuMzcsMC45MywwLjAxLDEuM0wxMy4wNiwxMmwzLjU0LDMuNzFjMC4zNiwwLjM3LDAuMzUsMC45NC0wLjAxLDEuM0MxNi41MywxNS44OSwxNi4yNywxNiwxNiwxNnoiLz48L3N2Zz4=" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                Andika Saving
+            </a>
+            <div class="navbar-nav ms-auto">
+                <!-- Notifikasi Dropdown -->
+                <div class="nav-item dropdown">
+                    <a class="nav-link position-relative" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyMmMxLjEgMCAyLS45IDItMnMtLjktMi0yLTItMiAuOS0yIDIgLjkgMiAyIDJ6bTAtMTguOTJjLS44MyAwLTEuNS42Ny0xLjUgMS41VjExYzAgMi41NS0yLjA0IDQuMzctNC4yMSA0LjkzLjUxIDEuMDkgMS4yMSAyLjA4IDIuMTIgMi44OC45MS44IDEuOTUgMS4zMiAzLjA5IDEuMzIgMS4xNCAwIDIuMTgtLjUyIDMuMDktMS4zMi45MS0uOCAxLjYxLTEuNzkgMi4xMi0yLjg4LTIuMTctLjU2LTQuMjEtMi4zOC00LjIxLTQuOTNWNC41OGMwLS44My0uNjctMS41LTEuNS0xLjV6Ii8+PC9zdmc+" width="20" height="20">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationBadge" style="display: none;">0</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown" style="min-width: 300px; max-height: 400px; overflow-y: auto;">
+                        <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                        <div id="notificationDropdownContent">
+                            <div class="dropdown-item text-muted">Memuat notifikasi...</div>
+                        </div>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item small text-center" href="#" id="markAllRead">Tandai semua sudah dibaca</a></li>
+                    </ul>
+                </div>
+                
+                <span class="navbar-text me-3">Halo, <span id="adminName">Admin</span></span>
+                <button class="btn btn-outline-light btn-sm" id="logoutBtn">Keluar</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-section py-4">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col">
+                    <h2 class="dashboard-title">Dashboard Admin</h2>
+                    <p class="dashboard-subtitle">Kelola data nasabah dan transaksi - <span id="lastUpdateTime"></span></p>
+                </div>
+            </div>
+
+            <!-- Statistik -->
+            <div class="row mb-4">
+                <div class="col-md-3 mb-3">
+                    <div class="stat-card">
+                        <h3 id="totalNasabah">0</h3>
+                        <p>Total Nasabah</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="stat-card">
+                        <h3 id="totalSaldo">Rp 0</h3>
+                        <p>Total Saldo</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="stat-card">
+                        <h3 id="totalTransaksi">0</h3>
+                        <p>Total Transaksi</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="stat-card">
+                        <h3 id="rataSaldo">Rp 0</h3>
+                        <p>Rata-rata Saldo</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Simulation Panel -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">📧 Simulasi Email Notifikasi</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="mb-2">Setiap transaksi nasabah akan mengirim notifikasi email ke:</p>
+                            <code class="bg-light p-2 rounded d-block">andikakhairulanwar10@gmail.com</code>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <button class="btn btn-outline-primary btn-sm" id="viewSentEmails">Lihat Email Terkirim</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daftar Nasabah -->
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">Daftar Nasabah</h5>
+                    <div>
+                        <span class="badge bg-primary me-2" id="lastUpdateBadge">Live</span>
+                        <button class="btn btn-sm btn-outline-primary" id="refreshData">Refresh Data</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Saldo</th>
+                                    <th>Jumlah Transaksi</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="nasabahTable">
+                                <!-- Data nasabah akan diisi oleh JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="noNasabah" class="text-center py-4 d-none">
+                        <p class="text-muted">Belum ada nasabah terdaftar</p>
+                        <a href="register.html" class="btn btn-primary">Daftarkan Nasabah Pertama</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Detail Nasabah -->
+    <div class="modal fade" id="detailNasabahModal" tabindex="-1" aria-labelledby="detailNasabahModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailNasabahModalLabel">Detail Nasabah</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6>Informasi Nasabah</h6>
+                            <div class="mb-2">
+                                <strong>Nama:</strong> <span id="detailNama">-</span>
+                            </div>
+                            <div class="mb-2">
+                                <strong>Email:</strong> <span id="detailEmail">-</span>
+                            </div>
+                            <div class="mb-2">
+                                <strong>Saldo:</strong> <span id="detailSaldo">Rp 0</span>
+                            </div>
+                            <div class="mb-2">
+                                <strong>Bergabung sejak:</strong> <span id="detailBergabung">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h6>Riwayat Transaksi</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Jenis</th>
+                                    <th>Jumlah</th>
+                                    <th>Saldo Sebelum</th>
+                                    <th>Saldo Sesudah</th>
+                                    <th>Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detailTransaksiTable">
+                                <!-- Data transaksi akan diisi oleh JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="noDetailTransactions" class="text-center py-4">
+                        <p class="text-muted">Belum ada transaksi</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Email Terkirim -->
+    <div class="modal fade" id="emailHistoryModal" tabindex="-1" aria-labelledby="emailHistoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="emailHistoryModalLabel">📧 History Email Terkirim</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>Subjek</th>
+                                    <th>Pesan</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="emailHistoryTable">
+                                <!-- Data email akan diisi oleh JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="noEmails" class="text-center py-4">
+                        <p class="text-muted">Belum ada email terkirim</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-outline-danger" id="clearEmailHistory">Hapus History</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="api-simulator.js"></script>
+    
+    <!-- Additional JavaScript for Admin Dashboard -->
+    <script>
+        // Additional functions for admin dashboard
+        function loadEmailHistory() {
+            const sentEmails = JSON.parse(localStorage.getItem('andika_sent_emails') || '[]');
+            const emailHistoryTable = document.getElementById('emailHistoryTable');
+            const noEmails = document.getElementById('noEmails');
+            
+            if (sentEmails.length === 0) {
+                emailHistoryTable.innerHTML = '';
+                noEmails.classList.remove('d-none');
+                return;
+            }
+            
+            noEmails.classList.add('d-none');
+            
+            let html = '';
+            sentEmails.forEach(email => {
+                html += `
+                    <tr>
+                        <td>${formatDate(email.timestamp)}</td>
+                        <td><strong>${email.subject}</strong></td>
+                        <td>
+                            <small>${email.message.replace(/\n/g, '<br>')}</small>
+                            ${email.nasabah_data ? `<br><small class="text-muted">Data: ${JSON.stringify(email.nasabah_data)}</small>` : ''}
+                        </td>
+                        <td><span class="badge bg-success">Terkirim</span></td>
+                    </tr>
+                `;
+            });
+            
+            emailHistoryTable.innerHTML = html;
+        }
+        
+        function updateLastUpdateTime() {
+            const lastUpdate = localStorage.getItem('andika_last_update');
+            const lastUpdateTime = document.getElementById('lastUpdateTime');
+            const lastUpdateBadge = document.getElementById('lastUpdateBadge');
+            
+            if (lastUpdate && lastUpdateTime) {
+                const date = new Date(parseInt(lastUpdate));
+                lastUpdateTime.textContent = `Terakhir update: ${date.toLocaleTimeString('id-ID')}`;
+                
+                // Update badge dengan animasi
+                lastUpdateBadge.classList.remove('bg-primary');
+                lastUpdateBadge.classList.add('bg-success');
+                setTimeout(() => {
+                    lastUpdateBadge.classList.remove('bg-success');
+                    lastUpdateBadge.classList.add('bg-primary');
+                }, 1000);
+            }
+        }
+        
+        // Event listeners untuk admin dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load email history modal
+            const viewSentEmails = document.getElementById('viewSentEmails');
+            if (viewSentEmails) {
+                viewSentEmails.addEventListener('click', function() {
+                    loadEmailHistory();
+                    const modal = new bootstrap.Modal(document.getElementById('emailHistoryModal'));
+                    modal.show();
+                });
+            }
+            
+            // Clear email history
+            const clearEmailHistory = document.getElementById('clearEmailHistory');
+            if (clearEmailHistory) {
+                clearEmailHistory.addEventListener('click', function() {
+                    if (confirm('Apakah Anda yakin ingin menghapus history email?')) {
+                        localStorage.setItem('andika_sent_emails', JSON.stringify([]));
+                        loadEmailHistory();
+                        showNotification('History email berhasil dihapus', 'success');
+                    }
+                });
+            }
+            
+            // Mark all notifications as read
+            const markAllRead = document.getElementById('markAllRead');
+            if (markAllRead) {
+                markAllRead.addEventListener('click', async function() {
+                    const notifications = await andikaAPI.getNotifications();
+                    for (const notif of notifications) {
+                        if (!notif.read) {
+                            await andikaAPI.markNotificationAsRead(notif.id);
+                        }
+                    }
+                    loadNotifications();
+                    showNotification('Semua notifikasi ditandai sudah dibaca', 'success');
+                });
+            }
+            
+            // Update last update time every second
+            setInterval(updateLastUpdateTime, 1000);
+            updateLastUpdateTime();
+        });
+        
+        // Override showNasabahDetail untuk menampilkan lebih detail
+        const originalShowNasabahDetail = window.showNasabahDetail;
+        window.showNasabahDetail = function(userId) {
+            const users = JSON.parse(localStorage.getItem('andika_saving_users') || '[]');
+            const nasabah = users.find(u => u.id === userId);
+            
+            if (!nasabah) return;
+            
+            // Update modal content
+            document.getElementById('detailNama').textContent = nasabah.name;
+            document.getElementById('detailEmail').textContent = nasabah.email;
+            document.getElementById('detailSaldo').textContent = formatCurrency(nasabah.saldo || 0);
+            document.getElementById('detailBergabung').textContent = formatDate(nasabah.createdAt);
+            
+            // Load transactions dengan detail lengkap
+            const transactions = getTransactionsForNasabah(userId);
+            const transactionsTable = document.getElementById('detailTransaksiTable');
+            const noTransactions = document.getElementById('noDetailTransactions');
+            
+            if (transactions.length === 0) {
+                transactionsTable.innerHTML = '';
+                noTransactions.classList.remove('d-none');
+            } else {
+                noTransactions.classList.add('d-none');
+                
+                let html = '';
+                transactions.forEach(transaction => {
+                    const isMenabung = transaction.type === 'menabung';
+                    const badgeClass = isMenabung ? 'badge-menabung' : 'badge-tarik';
+                    const badgeText = isMenabung ? 'Menabung' : 'Tarik Tunai';
+                    const amountClass = isMenabung ? 'text-success' : 'text-danger';
+                    const amountPrefix = isMenabung ? '+' : '-';
+                    
+                    html += `
+                        <tr>
+                            <td>${formatDate(transaction.createdAt)}</td>
+                            <td><span class="badge ${badgeClass}">${badgeText}</span></td>
+                            <td class="${amountClass}">${amountPrefix} ${formatCurrency(transaction.amount)}</td>
+                            <td>${formatCurrency(transaction.saldo_sebelum || 0)}</td>
+                            <td>${formatCurrency(transaction.saldo_sesudah || 0)}</td>
+                            <td>${transaction.keterangan}</td>
+                        </tr>
+                    `;
+                });
+                
+                transactionsTable.innerHTML = html;
+            }
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('detailNasabahModal'));
+            modal.show();
+        };
+    </script>
+</body>
+</html>
